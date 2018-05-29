@@ -1,11 +1,3 @@
-// To reactivate:
-// 1) open in browser: http://localhost:8000/an_index.html
-// 2) cd into the goesBackGmail folder,
-// 3) type  python -m SimpleHTTPServer 8000 in the terminal.
-
-// Client ID and API key from the Developer Console
-
-
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -13,7 +5,7 @@ const {google} = require('googleapis');
 // If modifying these scopes, delete credentials.json.
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 const TOKEN_PATH = 'credentials.json';
-console.log(TOKEN_PATH)
+
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
@@ -111,48 +103,3 @@ function listMessages(auth) {
     }
   });
 }
-// function getMessages(auth) {
-//   const gmail = google.gmail({version: 'v1', auth});
-//   gmail.users.messages.list({'userId': 'me'})
-//   .then(function(response) {
-//     console.log(response)
-//   }
-//  )
-// }
-
-//getMessages()
-
-/**   NO IDEA HOW THIS WORKS
-//https://developers.google.com/gmail/api/v1/reference/users/messages/list
-https://developers.google.com/gmail/api/v1/reference/users/messages/get
- * Retrieve Messages in user's mailbox matching query.
- *
- * @param  {String} userId User's email address. The special value 'me'
- * can be used to indicate the authenticated user.
- * @param  {String} query String used to filter the Messages listed.
- * @param  {Function} callback Function to call when the request is complete.
-
-function listMessages(me, query, callback) {
-  var getPageOfMessages = function(request, result) {
-    request.execute(function(resp) {
-      result = result.concat(resp.messages);
-      var nextPageToken = resp.nextPageToken;
-      if (nextPageToken) {
-        request = gapi.client.gmail.users.messages.list({
-          'userId': me,
-          'pageToken': nextPageToken,
-          'q': query
-        });
-        getPageOfMessages(request, result);
-      } else {
-        callback(result);
-      }
-    });
-  };
-  var initialRequest = gapi.client.gmail.users.messages.list({
-    'userId': me,
-    'q': query
-  });
-  getPageOfMessages(initialRequest, []);
-}
-*/
