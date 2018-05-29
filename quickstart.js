@@ -1,3 +1,10 @@
+// 1. Figure out how to set up node server/index page
+// 2. Debug listMessages error "The API returned an error: TypeError: Cannot read property 'length' of undefined."
+// 3. getMessages function -> return array of
+// 4. Filter results by regex
+// 5. display messages on index page.
+
+
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -10,7 +17,7 @@ const TOKEN_PATH = 'credentials.json';
 fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listLabels);
+  authorize(JSON.parse(content), listMessages); // call listMessages here!!!!
 });
 
 /**
@@ -90,7 +97,31 @@ function listMessages(auth) {
   const gmail = google.gmail({version: 'v1', auth});
   gmail.users.messages.list({
     userId: 'me',
-  }, (err, {data}) => {
+  }, (err, data) => {
+    let example = data.data.messages;
+    //console.log(example)
+    example.forEach(function(email) {
+    //  console.log(email)
+      let messageId = email.id
+       function getMessage(userId, messageId, callback) {
+         console.log(userId)
+         console.log(messageId)
+         console.log(callback)
+         let request = gapi.client.gmail.users.messages.get({
+           'userId': me,
+           'id': messageId
+         })
+         request.execute(callback)
+       }
+    })
+//     function getMessage(userId, example, callback) {
+//           var request = gapi.client.gmail.users.messages.get({
+//             'userId': me,
+//             'id': '163ac947913d192a'
+//            });
+//   request.execute(callback);
+// } HOW DOES THIS FUNCTION WORK
+
     if (err) return console.log('The API returned an error: ' + err);
     const labels = data.labels;
     if (labels.length) {
