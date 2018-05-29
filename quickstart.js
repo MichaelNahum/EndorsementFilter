@@ -1,10 +1,11 @@
-// 1. Figure out how to set up node server/index page
-// 2. Debug listMessages error "The API returned an error: TypeError: Cannot read property 'length' of undefined."
+// 1. Debug 404 message (probably routing issue)
+// 2. Debug listMessages error "UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): TypeError: Cannot read property 'data' of undefined."
 // 3. getMessages function -> return array of
 // 4. Filter results by regex
 // 5. display messages on index page.
 
-
+const express = require('express');
+const app  = express();
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -12,6 +13,17 @@ const {google} = require('googleapis');
 // If modifying these scopes, delete credentials.json.
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 const TOKEN_PATH = 'credentials.json';
+
+app.set("view engine", "hbs")
+
+app.get("/", (req, res) => {
+   res.render("index");
+});
+
+app.listen(3000, () => {
+  console.log("app listening on port 3000")
+})
+
 
 // Load client secrets from a local file.
 fs.readFile('client_secret.json', (err, content) => {
@@ -93,35 +105,26 @@ function listLabels(auth) {
   });
 }
 
-function listMessages(auth) {
-  const gmail = google.gmail({version: 'v1', auth});
-  gmail.users.messages.list({
-    userId: 'me',
-  }, (err, data) => {
-    let example = data.data.messages;
-    //console.log(example)
-    example.forEach(function(email) {
-    //  console.log(email)
-      let messageId = email.id
-       function getMessage(userId, messageId, callback) {
-         console.log(userId)
-         console.log(messageId)
-         console.log(callback)
-         let request = gapi.client.gmail.users.messages.get({
+function getMessage(gmail, messageId, callback) {
+         let request = gmail.users.messages.get({
            'userId': me,
            'id': messageId
          })
          request.execute(callback)
        }
-    })
-//     function getMessage(userId, example, callback) {
-//           var request = gapi.client.gmail.users.messages.get({
-//             'userId': me,
-//             'id': '163ac947913d192a'
-//            });
-//   request.execute(callback);
-// } HOW DOES THIS FUNCTION WORK
 
+
+       function listMessages(auth) {
+         const gmail = google.gmail({version: 'v1', auth});
+         gmail.users.messages.list({
+           userId: 'me',
+         }, (err, data) => {
+           let example = data.data.messages;
+           example.forEach(function(email) {
+            console.log(email)
+             let messageId = email.id
+              getMessage(gmail, messageId, function (response) { console.log(response) })
+    })
     if (err) return console.log('The API returned an error: ' + err);
     const labels = data.labels;
     if (labels.length) {
