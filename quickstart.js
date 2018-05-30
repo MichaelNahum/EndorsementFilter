@@ -115,12 +115,11 @@ function authorize(credentials, callback) {
           getMessage(gmail, email.id, (err, response) =>{
             allMessages.push(response.data)
           });
-        }).then(seeElement());
+        });
       });
 
     }
 
-function seeElement() {console.log(allMessages[0])}
 
   app.set("view engine", "hbs")
 
