@@ -1,7 +1,3 @@
-// 1. getMessages function -> return array of
-// 2. Filter results by regex
-// 3. display messages on index page.
-
 const express = require('express');
 const app  = express();
 const fs = require('fs');
@@ -116,14 +112,21 @@ function authorize(credentials, callback) {
             }
           })
         })
-   // let headers = messages.map( message => {return message.payload.headers[31].value})
+  //  let headers = messages.map( message => {return message.payload.headers[31].value})
   //  let captions = headers.filter( header => header.match(/Syria/g))
-  // to do list = 1. display messages on index, 2. create user search field, 3. sync userSearch.val with header.match()
+  //  ToDoList:
+  //  1. get headers and captions out of callback hell
+  //  2. display messages on index.hbs,
+  //  3. create user search field,
+  //  4. sync userSearch.val with header.match()
       })
     };
 
 
   app.set("view engine", "hbs")
+
+  app.use(express.static('public'))
+
 
   app.get("/", (req, res) => {
     res.render("index", {messages: JSON.stringify(allMessages), test: '123'});
