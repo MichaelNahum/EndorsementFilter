@@ -118,6 +118,7 @@ function authorize(credentials, callback) {
         })
    // let headers = messages.map( message => {return message.payload.headers[31].value})
   //  let captions = headers.filter( header => header.match(/Syria/g))
+  // to do list = 1. display messages on index, 2. create user search field, 3. sync userSearch.val with header.match()
       })
     };
 
