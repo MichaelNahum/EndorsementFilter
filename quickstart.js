@@ -116,10 +116,8 @@ function authorize(credentials, callback) {
             }
           })
         })
-  // let headers = messages.map( message => {return message.payload.headers[31].value})
-  //  const regex = new RegExp('/Syria\\b', 'g')
-  //  let matches = headers.filter( header => header.match(regex))
-  //  let matches = headers.filter( header => header.match(/Syria/g))
+   // let headers = messages.map( message => {return message.payload.headers[31].value})
+  //  let captions = headers.filter( header => header.match(/Syria/g))
       })
     };
 
