@@ -109,24 +109,19 @@ function authorize(credentials, callback) {
       }, (err, response) => {
         if (err) return console.log('The API returned an error: ' + err);
         let messages = response.data.messages;
-        //console.log(messages);
-        console.log(messages[5])
-
-
         messages.forEach(email => {
           getMessage(gmail, email.id, (err, response) =>{
-            allMessages.push(response.data)
+            if (response.data.labelIds[1] == "Label_7"){
+              allMessages.push(response.data)
+            }
           })
-        }).then(filterEmails(messages))
-
+        })
+  // let headers = messages.map( message => {return message.payload.headers[31].value})
+  //  const regex = new RegExp('/Syria\\b', 'g')
+  //  let matches = headers.filter( header => header.match(regex))
+  //  let matches = headers.filter( header => header.match(/Syria/g))
       })
     };
-
-    function filterEmails(messages){
-      messages.filter( email => {
-        return email.labelIds[1] == "Label_7"
-      });
-    }
 
 
   app.set("view engine", "hbs")
