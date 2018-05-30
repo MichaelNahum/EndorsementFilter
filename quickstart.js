@@ -110,14 +110,22 @@ function authorize(credentials, callback) {
         if (err) return console.log('The API returned an error: ' + err);
         let messages = response.data.messages;
         //console.log(messages);
+        console.log(messages[5])
+
 
         messages.forEach(email => {
           getMessage(gmail, email.id, (err, response) =>{
             allMessages.push(response.data)
-          });
-        });
-      });
+          })
+        }).then(filterEmails(messages))
 
+      })
+    };
+
+    function filterEmails(messages){
+      messages.filter( email => {
+        return email.labelIds[1] == "Label_7"
+      });
     }
 
 
