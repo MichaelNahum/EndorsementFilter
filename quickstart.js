@@ -113,9 +113,11 @@ function authorize(credentials, callback) {
           })
         })
   //  let headers = messages.map( message => {return message.payload.headers[31].value})
+  //  let dates = messages.map(message => {return message.payload.headers[34].value})
   //  let captions = headers.filter( header => header.match(/Syria/g))
+  //
   //  ToDoList:
-  //  1. get headers and captions out of callback hell
+  //  1. get headers, dates, and captions out of callback hell
   //  2. display messages on index.hbs,
   //  3. create user search field,
   //  4. sync userSearch.val with header.match()
