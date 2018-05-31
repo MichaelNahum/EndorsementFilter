@@ -40,13 +40,20 @@
       return message.payload.headers[31].value.match(/Syria/g);
     });
 
-      let names={};
+      let posts={};
       let dates={};
 
       for(let i=0; i<captions.length;i++){
-        names[i]=captions[i].payload.headers[31].value;
+        posts[i]=captions[i].payload.headers[31].value;
         dates[i]=captions[i].payload.headers[34].value;
-      
+
+    }
+
+    let $e = $("<div />").addClass("endorsement")
+
+    for (let i=0; i< captions.length; i++){
+      $e.append($("<div />").addClass("timestamp").value(dates[i]))
+      $e.append($("<div />").addClass("headline").value(posts[i]))
     }
 
 // captions.forEach(function(caption){
