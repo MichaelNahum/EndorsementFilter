@@ -49,13 +49,15 @@
 
     }
 
-    let $e = $("<div />").addClass("endorsement")
+$('.endorsement').on("click", populateColumn())
 
+function populateColumn(){
+  let $e = $("<div />").addClass("endorsement")
     for (let i=0; i< captions.length; i++){
       $e.append($("<div />").addClass("timestamp").value(dates[i]))
       $e.append($("<div />").addClass("headline").value(posts[i]))
     }
-
+}
 // captions.forEach(function(caption){
 //   let endorsement = document.createElement('.endorsement')
 //   endorsement#place.textContent =
