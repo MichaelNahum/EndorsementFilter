@@ -116,14 +116,6 @@ function authorize(credentials, callback) {
       })
     };
 
-
-    //
-    //  ToDoList:
-    //
-    //  1. jquery logic for instantiating new endorsements with names, dates
-    //  2. set userSearch.val with line 40's header.match(/WORD/g)
-    //  3.
-
   app.set("view engine", "hbs")
 
   app.use(express.static('public'))

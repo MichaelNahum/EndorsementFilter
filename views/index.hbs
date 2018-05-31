@@ -7,13 +7,13 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
 <script  src="../client_secret.json"></script>
 <script src="../quickstart.js"></script> -->
   <head>
-    <title>Gmail API Quickstart</title>
+    <title>Goes Back</title>
     <meta charset='utf-8' />
     <link rel="stylesheet" type="text/css" href="style.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-    <p>Gmail API Quickstart</p>
+    <h2>Endorsement Validator</h2>
    <p>{{message}}</p>
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize-button" style="display: none;">Authorize</button>
@@ -35,50 +35,41 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
  </div>
 
     <script>
+
+    messages = {{{messages}}}
+
     endorse_template = $('.endorsement').clone();
     $('.endorsement').remove();
-    messages = {{{messages}}}
+
+    let userSearch = $('.place').val()
+    let captions = messages.filter(message => {
+      return message.payload.headers[31].value.match(/New York/g);
+    });
+    let names={};
+    let dates={};
+    for(let i=0; i<captions.length;i++){
+      names[i]=captions[i].payload.headers[31].value;
+      dates[i]=captions[i].payload.headers[34].value;
+    }
+
     function createEndorsement(email) {
       let endorse = endorse_template.clone();
       endorse.find('.timestamp').text(new Date(+email.internalDate));
-      endorse.find('.headline').text(email.snippet);
+      endorse.find('.headline').text(email.payload.headers[31].value);
       return endorse;
     }
-    function populateMessages(emails) {
-      return emails.map(e => createEndorsement(e));
+
+    function populateMessages(captions) {
+      return captions.map(e => createEndorsement(e));
     }
-    $("#endorsements").append(populateMessages(messages));
+
+  $("#endorsements").append(populateMessages(captions));
+   $("#place").submit(function() {
+     $("#endorsements").append(populateMessages(captions))
+   });
 
 
-    //    let captions = messages.filter(message => {
-    //      return message.payload.headers[31].value.match(/Syria/g);
-    //    });
-    //   let names={};
-    //   let dates={};
-    //   for(let i=0; i<captions.length;i++){
-    //     names[i]=captions[i].payload.headers[31].value;
-    //     dates[i]=captions[i].payload.headers[34].value;
 
-    // }
-    // captions.forEach(function(caption){
-    //   let endorsement = document.createElement('.endorsement')
-    //   endorsement#place.textContent =
-    // })
-    //
-    //     let newEndorsement = document.createDocumentFragment();
-    //     for (let i=0; i< captions.length; i++) {
-    //         let e = document.createElement("div");
-    //         e.className = "endorsement";
-    //         c.appendChild(e);
-    //     }
-    //     document.body.appendChild(newEndorsement);
-    // $('select').change(function() {
-    //  var num = parseInt($(this).val(), 10);
-    //  var container = $('<div />');
-    //  for(var i = 1; i <= num; i++) {
-    //      container.append('<input id="id'+i+'" name="name'+i+'" />');
-    //  }
-    //  $('somewhere').html(container);
     </script>
 
   </body>
