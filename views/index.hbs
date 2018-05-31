@@ -4,6 +4,7 @@
     <title>Gmail API Quickstart</title>
     <meta charset='utf-8' />
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <p>Gmail API Quickstart</p>
@@ -34,6 +35,30 @@
 
     <script>
       messages = {{{messages}}}
+
+      let captions = messages.filter(message => {
+        return message.payload.headers[31].value.match(/Syria/g);
+      });
+
+        let names={};
+        let dates={};
+
+      for(let i=0; i<captions.length;i++){
+        names[i]=captions[i].payload.headers[31].value;
+        dates[i]=captions[i].payload.headers[34].value;
+      }
+
+      $('.endorsement').on('click', function() {console.log('hello')})
+
+    // $('select').change(function() {
+    //  var num = parseInt($(this).val(), 10);
+    //  var container = $('<div />');
+    //  for(var i = 1; i <= num; i++) {
+    //      container.append('<input id="id'+i+'" name="name'+i+'" />');
+    //  }
+    //  $('somewhere').html(container);
+});
+
     </script>
 
   </body>
