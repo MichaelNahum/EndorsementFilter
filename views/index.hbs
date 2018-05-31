@@ -41,9 +41,9 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
     endorse_template = $('.endorsement').clone();
     $('.endorsement').remove();
 
-    let userSearch = $('.place').val()
+    let userSearch = $('#place').val()
     let captions = messages.filter(message => {
-      return message.payload.headers[31].value.match(/New York/g);
+      return message.payload.headers[31].value.match(/userSearch/g);
     });
     let names={};
     let dates={};
@@ -63,7 +63,7 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
       return captions.map(e => createEndorsement(e));
     }
 
-  $("#endorsements").append(populateMessages(captions));
+  //$("#endorsements").append(populateMessages(captions));
    $("#place").submit(function() {
      $("#endorsements").append(populateMessages(captions))
    });
