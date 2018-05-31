@@ -3,6 +3,7 @@ const app  = express();
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
+const $ = require('jquery')
 
 // If modifying these scopes, delete credentials.json.
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
@@ -93,7 +94,7 @@ function authorize(credentials, callback) {
       let request = gmail.users.messages.get({
         'userId': 'me',
         'id': messageId
-      }, callback); //what is callback doing?
+      }, callback);
     }
 
     function listMessages(auth) {
@@ -121,7 +122,7 @@ function authorize(credentials, callback) {
     //
     //  1. jquery logic for instantiating new endorsements with names, dates
     //  2. set userSearch.val with line 40's header.match(/WORD/g)
-    //  3. wddwqweefefe
+    //  3.
 
   app.set("view engine", "hbs")
 

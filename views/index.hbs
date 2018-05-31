@@ -4,7 +4,7 @@
     <title>Gmail API Quickstart</title>
     <meta charset='utf-8' />
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <p>Gmail API Quickstart</p>
@@ -21,7 +21,6 @@
      <input type="text" placeholder="Hours back..." id="time">
    </div>
    <div class="endorsement">
-     <span class="city">Deir ez-Zur, Syria</span>
      <span class="timestamp">08:04pm May 12, 2018 EDT</span>
      <div class="headline">Syrian government forces fire on coalition aircraft near SDF controlled village of Mahkan, Syria: Local News Outlet via Twitter.</div><br>
    </div>
@@ -34,21 +33,34 @@
     <script src="../quickstart.js"></script> -->
 
     <script>
-      messages = {{{messages}}}
 
-      let captions = messages.filter(message => {
-        return message.payload.headers[31].value.match(/Syria/g);
-      });
+    messages = {{{messages}}}
 
-        let names={};
-        let dates={};
+    let captions = messages.filter(message => {
+      return message.payload.headers[31].value.match(/Syria/g);
+    });
+
+      let names={};
+      let dates={};
 
       for(let i=0; i<captions.length;i++){
         names[i]=captions[i].payload.headers[31].value;
         dates[i]=captions[i].payload.headers[34].value;
-      }
+      
+    }
 
-      $('.endorsement').on('click', function() {console.log('hello')})
+// captions.forEach(function(caption){
+//   let endorsement = document.createElement('.endorsement')
+//   endorsement#place.textContent =
+// })
+//
+//     let newEndorsement = document.createDocumentFragment();
+//     for (let i=0; i< captions.length; i++) {
+//         let e = document.createElement("div");
+//         e.className = "endorsement";
+//         c.appendChild(e);
+//     }
+//     document.body.appendChild(newEndorsement);
 
     // $('select').change(function() {
     //  var num = parseInt($(this).val(), 10);
@@ -57,7 +69,6 @@
     //      container.append('<input id="id'+i+'" name="name'+i+'" />');
     //  }
     //  $('somewhere').html(container);
-});
 
     </script>
 
