@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<!-- <script async defer src="https://apis.google.com/js/api.js"
+onload="this.onload=function(){};handleClientLoad()"
+onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
+<script  src="../client_secret.json"></script>
+<script src="../quickstart.js"></script> -->
   <head>
     <title>Gmail API Quickstart</title>
     <meta charset='utf-8' />
@@ -20,57 +26,52 @@
      <input type="text" placeholder="Location..." id="place">
      <input type="text" placeholder="Hours back..." id="time">
    </div>
+   <div id="endorsements">
+   </div>
    <div class="endorsement">
      <span class="timestamp">08:04pm May 12, 2018 EDT</span>
      <div class="headline">Syrian government forces fire on coalition aircraft near SDF controlled village of Mahkan, Syria: Local News Outlet via Twitter.</div><br>
    </div>
  </div>
-    <!-- <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
-    <script  src="../client_secret.json"></script>
-    <script src="../quickstart.js"></script> -->
 
     <script>
-
+    endorse_template = $('.endorsement').clone();
+    $('.endorsement').remove();
     messages = {{{messages}}}
-
-    let captions = messages.filter(message => {
-      return message.payload.headers[31].value.match(/Syria/g);
-    });
-
-      let posts={};
-      let dates={};
-
-      for(let i=0; i<captions.length;i++){
-        posts[i]=captions[i].payload.headers[31].value;
-        dates[i]=captions[i].payload.headers[34].value;
-
+    function createEndorsement(email) {
+      let endorse = endorse_template.clone();
+      endorse.find('.timestamp').text(new Date(+email.internalDate));
+      endorse.find('.headline').text(email.snippet);
+      return endorse;
     }
-
-$('.endorsement').on("click", populateColatomumn())
-
-function populateColumn(){
-  let $e = $("<div />").addClass("endorsement")
-    for (let i=0; i< captions.length; i++){
-      $e.append($("<div />").addClass("timestamp").value(dates[i]))
-      $e.append($("<div />").addClass("headline").value(posts[i]))
+    function populateMessages(emails) {
+      return emails.map(e => createEndorsement(e));
     }
-}
-// captions.forEach(function(caption){
-//   let endorsement = document.createElement('.endorsement')
-//   endorsement#place.textContent =
-// })
-//
-//     let newEndorsement = document.createDocumentFragment();
-//     for (let i=0; i< captions.length; i++) {
-//         let e = document.createElement("div");
-//         e.className = "endorsement";
-//         c.appendChild(e);
-//     }
-//     document.body.appendChild(newEndorsement);
+    $("#endorsements").append(populateMessages(messages));
 
+
+    //    let captions = messages.filter(message => {
+    //      return message.payload.headers[31].value.match(/Syria/g);
+    //    });
+    //   let names={};
+    //   let dates={};
+    //   for(let i=0; i<captions.length;i++){
+    //     names[i]=captions[i].payload.headers[31].value;
+    //     dates[i]=captions[i].payload.headers[34].value;
+
+    // }
+    // captions.forEach(function(caption){
+    //   let endorsement = document.createElement('.endorsement')
+    //   endorsement#place.textContent =
+    // })
+    //
+    //     let newEndorsement = document.createDocumentFragment();
+    //     for (let i=0; i< captions.length; i++) {
+    //         let e = document.createElement("div");
+    //         e.className = "endorsement";
+    //         c.appendChild(e);
+    //     }
+    //     document.body.appendChild(newEndorsement);
     // $('select').change(function() {
     //  var num = parseInt($(this).val(), 10);
     //  var container = $('<div />');
@@ -78,7 +79,6 @@ function populateColumn(){
     //      container.append('<input id="id'+i+'" name="name'+i+'" />');
     //  }
     //  $('somewhere').html(container);
-
     </script>
 
   </body>
