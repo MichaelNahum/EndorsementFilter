@@ -9,12 +9,12 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
   <head>
     <title>Goes Back</title>
     <meta charset='utf-8' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <h2>Endorsement Validator</h2>
-   <p>{{message}}</p>
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize-button" style="display: none;">Authorize</button>
     <button id="signout-button" style="display: none;">Sign Out</button>
@@ -23,8 +23,8 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
 
   <div id="column">
    <div class="topnav">
-     <input type="text" placeholder="Location..." id="place">
-     <input type="text" placeholder="Hours back..." id="time">
+     <input type="text" placeholder="Syria" id="place" >
+     <button type="submit" id="searchButton"><i class="fa fa-search"></i></button>
    </div>
    <div id="endorsements">
    </div>
@@ -41,33 +41,31 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
     endorse_template = $('.endorsement').clone();
     $('.endorsement').remove();
 
-    let userSearch = $('#place').val()
-    let captions = messages.filter(message => {
-      return message.payload.headers[31].value.match(/userSearch/g);
+    let userSearch = new RegExp($('#place').val(), "g");
+
+    let captions = messages.filter(function(message){
+      return message.payload.headers[31].value.match(userSearch);
     });
-    let names={};
-    let dates={};
-    for(let i=0; i<captions.length;i++){
-      names[i]=captions[i].payload.headers[31].value;
-      dates[i]=captions[i].payload.headers[34].value;
-    }
 
-    function createEndorsement(email) {
-      let endorse = endorse_template.clone();
-      endorse.find('.timestamp').text(new Date(+email.internalDate));
-      endorse.find('.headline').text(email.payload.headers[31].value);
-      return endorse;
-    }
+  function createEndorsement(email) {
+    let endorse = endorse_template.clone();
+    endorse.find('.timestamp').text(new Date(+email.internalDate));
+    endorse.find('.headline').text(email.payload.headers[31].value);
+    return endorse;
+  }
 
-    function populateMessages(captions) {
-      return captions.map(e => createEndorsement(e));
-    }
+  function populateMessages(captions) {
+    return captions.map(e => createEndorsement(e));
+  }
 
-  //$("#endorsements").append(populateMessages(captions));
-   $("#place").submit(function() {
-     $("#endorsements").append(populateMessages(captions))
-   });
-
+  // $("#endorsements").append(populateMessages(captions));
+  $( () => {
+    console.log($('#searchButton'));
+    $('#searchButton').click(function() {
+      $('#endorsements').append(populateMessages(captions))
+    );
+  }
+});
 
 
     </script>

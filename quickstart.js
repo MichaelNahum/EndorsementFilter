@@ -3,7 +3,6 @@ const app  = express();
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
-const $ = require('jquery')
 
 // If modifying these scopes, delete credentials.json.
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
@@ -64,29 +63,6 @@ function authorize(credentials, callback) {
         });
         callback(oAuth2Client);
       });
-    });
-  }
-
-  /**
-  * Lists the labels in the user's account.
-  *
-  * @param {google.auth.OAuth2} An authorized OAuth2 client.
-  */
-  function listLabels(auth) {
-    const gmail = google.gmail({version: 'v1', auth});
-    gmail.users.labels.list({
-      userId: 'me',
-    }, (err, {data}) => {
-      if (err) return console.log('The API returned an error: ' + err);
-      const labels = data.labels;
-      if (labels.length) {
-        console.log('Labels:');
-        labels.forEach((label) => {
-          console.log(`- ${label.name}`);
-        });
-      } else {
-        console.log('No labels found.');
-      }
     });
   }
 
