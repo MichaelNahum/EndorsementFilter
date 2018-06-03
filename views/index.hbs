@@ -30,6 +30,7 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
    </div>
    <div class="endorsement">
      <span class="timestamp">08:04pm May 12, 2018 EDT</span>
+     <button aria-label="Close">&times;</button>
      <div class="headline">Syrian government forces fire on coalition aircraft near SDF controlled village of Mahkan, Syria: Local News Outlet via Twitter.</div><br>
    </div>
  </div>
@@ -59,12 +60,23 @@ onreadystatechange="if (this.readyState === 'complete') this.onload()">
   }
 
      $('#searchButton').click(function() {
+       $('#endorsements').empty()
        let userSearch = new RegExp($('#place').val(), "g");
        let captions = messages.filter(function(message){
          return message.payload.headers[31].value.match(userSearch);
        });
        $('#endorsements').append(populateMessages(captions))
      });
+  //   $('#place').submit(function(event) {console.log(event)})
+
+     // $('#place').onsubmit(function() {
+     //   $('#endorsements').empty()
+     //   let userSearch = new RegExp($('#place').val(), "g");
+     //   let captions = messages.filter(function(message){
+     //     return message.payload.headers[31].value.match(userSearch);
+     //   });
+     //   $('#endorsements').append(populateMessages(captions))
+     // });
 
 
 
