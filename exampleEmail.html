@@ -1,0 +1,948 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta property="og:title" content="Dataminr">
+    <title>Dataminr</title>
+    <style type="text/css">
+#outlook a {
+    padding: 0;
+}
+
+body {
+    width: 100% !important;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+    outline: none;
+    display: block;
+}
+
+.backgroundTable {
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    table-layout: fixed;
+}
+
+table td {
+    border-collapse: collapse;
+}
+
+a, a img {
+    transition: all .25s;
+}
+
+a:hover {
+    opacity: .6;
+}
+
+a:hover img {
+    opacity: .6;
+}
+
+#gmailfix {
+    display: none;
+}
+
+.bgTable {
+    background: #ffffff;
+}
+
+.org, .org a:link, .org a:visited {
+    color: #FF9118;
+    font-family: Arial, sans-serif;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth, .auth a:link, .auth a:visited {
+    color: #343A3E;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.han, .han a:link, .han a:visited {
+    color: #94a4af;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 16px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.auth2, .auth2 a:link, .auth2 a:visited {
+    color: #343A3E;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.han2, .han2 a:link, .han2 a:visited {
+    color: #94a4af;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.view, .view a:link, .view a:visited {
+    color: #0057a5;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.dff, .dff a:link, .dff a:visited {
+    color: #002a53;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sept, .sept a:link, .sept a:visited {
+    color: #343A3E;
+    font-family: Arial, sans-serif;
+    line-height: 130%;
+    font-size: 21px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.sept2, .sept2 a:link, .sept2 a:visited {
+    color: #343A3E;
+    font-family: Arial, sans-serif;
+    line-height: 110%;
+    font-size: 18px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.h1, .h1 a:link, .h1 a:visited {
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 20px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.h2, .h2 a:link, .h2 a:visited {
+    color: #838d99;
+    font-family: Arial, sans-serif;
+    line-height: 130%;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.h3, .h3 a:link, .h3 a:visited {
+    color: #343a3e;
+    font-family: Arial, sans-serif;
+    line-height: 100%;
+    font-size: 13px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.preHeader, .preHeader a:link, preHeader a:visited {
+    color: #555555;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    line-height: 120%;
+}
+
+.preHeader a:link, preHeader a:visited {
+    text-decoration: underline;
+}
+
+.body {
+    color: #444444;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 130%;
+}
+
+.body a:link, .body a:visited {
+    color: #e41c40;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.body2 {
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 130%;
+}
+
+.body2 a:link, .body2 a:visited {
+    color: #a7abae;
+    text-decoration: none;
+    font-weight: none;
+}
+
+.body3 {
+    color: #444444;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 150%;
+}
+
+.body3 a:link, .body a:visited {
+    color: #e41c40;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.button {
+    background: #29abe2;
+    cursor:pointer;
+}
+
+.channel {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.footer {
+    color: #999999;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 100%;
+}
+
+.footer a:link, .footer a:visited {
+    color: #999999;
+    text-decoration: underline;
+}
+
+.container {
+    width: 600px;
+    border: #c8c8c8 1px solid;
+}
+
+.wrapper {
+    width: 560px;
+    background: #ffffff;
+}
+
+.fullTable {
+    width: 540px;
+}
+
+.midTable {
+    width: 530px;
+}
+
+.innerTable {
+    width: 520px;
+}
+
+.smallTable {
+    width: 500px;
+}
+
+.smallspacer {
+    height: 10px;
+    font-size: 10px;
+    line-height: 10px;
+}
+
+.fleximage img {
+}
+
+@media only screen and (max-width: 480px) {
+    table.container {
+        width: 320px !important;
+    }
+    table.wrapper {
+        width: 320px !important;
+    }
+
+    table.fullTable, td.fullTable {
+        width: 300px !important;
+    }
+
+    table.midTable, td.midTable {
+            width: 290px !important;
+    }
+
+    table.innerTable, td.innerTable {
+        width: 280px !important;
+    }
+
+    table.smallTable, td.smallTable {
+        width: 260px !important;
+    }
+
+    td.fleximage img {
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    a.button {
+        width: 80px !important;
+        line-height:100% !important;
+        padding: 8px 0;
+    }
+
+    a.account-button {
+        width: 200px !important;
+        line-height:100% !important;
+        padding: 8px 0;
+    }
+
+    a.dataminr-button {
+        width: 120px !important;
+        line-height: 100% !important;
+        padding: 8px 0;
+    }
+
+    .cta-mobile-offset {
+        margin: 0 10px;
+    }
+
+    td.buttontext a:link {
+        font-size: 11px !important;
+    }
+
+    td.body, td.body a:link, td.body a:visited {
+        font-size: 12px !important;
+    }
+
+    td.h1, td.h1 a:link, td.h1 a:visited {
+        font-size: 24px !important;
+    }
+
+    td.h2, td.h2 a:link, td.h2 a:visited {
+        font-size: 20px !important;
+    }
+
+    table.hide, img.hide, td.hide {
+        display: none !important;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+    td.column {
+        display: block;
+        float: none !important;
+    }
+
+    table.mobile100 {
+        float: none !important;
+        width: 100% !important;
+    }
+
+    .welcome-header {
+        font-size: 25px !important;
+    }
+
+    .collapsedSpacer {
+        height: 0px !important;
+        font-size: 0px !important;
+        line-height: 0px !important;
+    }
+    .body2 {
+        font-size: 12px !important;
+    }
+    .inlineImage {
+        width: 90px !important;
+    }
+}    </style>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0"
+      style="-webkit-text-size-adjust: none;-ms-text-size-adjust: none;text-rendering: optimizeLegibility;-webkit-font-smoothing: antialiased;margin: 0;padding: 0;width: 100% !important;">
+<div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+Bājil, Yemen | الحديدة الآن🇾🇪 (@ALHodeidah_now) | #الحديدة_الآن ، تهامة تنتصر | Account Created: 03.29.2015 | Tweets: 6,342 | Followers: 22,498 | </div>
+<center>
+    <table class="backgroundTable" border="0" cellspacing="0" cellpadding="0"
+           style="margin: 0;padding: 0;table-layout: fixed;height: 100% !important;width: 100% !important;">
+        <tr>
+            <td align="center" valign="top" class="bgTable" style="border-collapse: collapse;background: #ffffff;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                <table border="0" cellspacing="0" cellpadding="0" class="container" style="width: 600px;background: #ffffff;border: #c8c8c8 1px solid;">
+                    <tr>
+                        <td align="center" valign="top" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer collapsedSpacer"  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer collapsedSpacer"  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                            <table border="0" cellspacing="0" cellpadding="0" class="wrapper" style="width: 560px;background: #ffffff;">
+                                <tr>
+                                    <td align="center" class="column" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0" style="width: 560px;background: #ffffff;" class="wrapper">
+    <tr>
+        <td class="smallspacer " bgcolor="#FF9118" style="border-collapse: collapse;height: 4px;font-size: 4px;line-height: 4px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wrapper" style="width: 560px;background: #f4f4f4;">
+    <tr><td bgcolor="#f4f4f4" colspan=3 ><table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+</td></tr>
+    <tr>
+        <td align="left" bgcolor="#f4f4f4" style="border-collapse: collapse;">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="15">&nbsp;</td>
+                    <td class="org"
+                        style="border-collapse: collapse;color: #FF9118;font-family: Arial, sans-serif;line-height: 100%;font-size: 20px;font-weight: bold;text-decoration: none;">
+                        Urgent
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td bgcolor="#f4f4f4" style="border-collapse: collapse;">&nbsp;</td>
+        <td width="150" align="center" bgcolor="#f4f4f4" style="border-collapse: collapse;">
+            <table border="0" cellspacing="0" cellpadding="0" class="mobile100">
+                <tr>
+                    <td align="center" style="border-collapse: collapse;">
+                        <img src="https://s3.amazonaws.com/com.ebh.dataminr.web/email/dataminr.png" alt="" width="124"
+                            style="border: none;outline: none;display: block;">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr><td bgcolor="#f4f4f4" colspan=3 ><table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+</td></tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  class="wrapper">
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 5px;font-size: 5px;line-height: 5px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="wrapper" style="width: 560px;background: #ffffff;">
+    <tr>
+        <td bgcolor="#ffffff" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 5px;font-size: 5px;line-height: 5px;">
+            &nbsp;</td>
+    </tr>
+</table>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="10" align="center" class="org"
+                        style="border-collapse: collapse;color: #FF9118;font-family: Arial, sans-serif;line-height: 100%;font-size: 18px;font-weight: bold;text-decoration: none;">
+                        &nbsp;</td>
+<td class="body" width="8" align="center" valign="middle" style="border-collapse: collapse;line-height: 100%;">
+    <img src="https://s3.amazonaws.com/com.ebh.dataminr.web/email/location_icon.png" alt=""
+        width="8" style="border: none;outline: none;display: block;">
+</td>
+<td>&nbsp;</td>
+<td align="left" class="body" valign="middle"
+    style="border-collapse: collapse;color: #666666;font-family: Arial, sans-serif;font-size: 11px;line-height: 100%;font-weight:bold;">
+    Bājil, Yemen
+</td>
+                </tr>
+            </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 5px;font-size: 5px;line-height: 5px;">
+            &nbsp;</td>
+    </tr>
+</table>
+        </td>
+        <td align="right" bgcolor="#ffffff" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 5px;font-size: 5px;line-height: 5px;">
+            &nbsp;</td>
+    </tr>
+</table>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="body"
+                        style="border-collapse: collapse;color: #444444;font-family: Arial, sans-serif;font-size: 11px;line-height: 130%;">
+                        <strong>08:45pm June 03, 2018 EDT</strong></td>
+                    <td width="15" align="center" class="body"
+                        style="border-collapse: collapse;color: #444444;font-family: Arial, sans-serif;font-size: 11px;line-height: 100%;">
+                        &nbsp;</td>
+                </tr>
+            </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 5px;font-size: 5px;line-height: 5px;">
+            &nbsp;</td>
+    </tr>
+</table>
+        </td>
+    </tr>
+</table>
+
+<table border="0" cellspacing="0" cellpadding="0" class="fullTable" style="border: solid 1px #ffffff;width: 540px;">
+    <tr>
+        <td colspan=3 valign="top" style="border-collapse: collapse;">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="left" class="sept"
+                        style="border-collapse: collapse;color: #343A3E;font-family: Arial, sans-serif;line-height: 130%;font-size: 21px;font-weight: bold;text-decoration: none;">
+                        Airstrikes target Bajil area, Yemen: Local Source via Twitter.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+    <table border="0" cellspacing="0" cellpadding="0" class="fullTable" style="border: solid 1px #ffffff;width: 540px;">
+        <tr>
+            <td colspan=3 valign="top" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" class="sept"
+                            style="border-collapse: collapse;color: #343A3E;font-family: Arial, sans-serif;line-height: 130%;font-size: 12px;text-decoration: none;">
+ORIGINAL TWEET (08:45pm June 03, 2018 EDT)
+                        </td>
+                    </tr>
+                </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+            </td>
+        </tr>
+    </table>
+
+    <table border="0" cellspacing="0" cellpadding="0" class="fullTable" style="border: solid 1px #c8c8c8;width: 540px;">
+        <tr>
+            <td width="10" align="left" style="border-collapse: collapse;">
+                &nbsp;</td>
+            <td align="left" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" class="sept"
+                            style="border-collapse: collapse;color: #343A3E;font-family: Arial, sans-serif;line-height: 130%;font-size: 15px;text-decoration: none;">
+                            #Urgent Air raids on Bagel are now two strikes
+                        </td>
+                    </tr>
+                </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr><td align="left" style="border-collapse: collapse;color: #5b5b5b;font-family: Arial, sans-serif;font-size: 11px;line-height: 100%;">TRANSLATED FROM ARABIC:</td></tr>
+                        <tr><td><table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 4px;font-size: 4px;line-height: 4px;">
+            &nbsp;</td>
+    </tr>
+</table>
+</td></tr>
+                        <tr>
+                            <td align="left"
+                                style="border-collapse: collapse;color: #5b5b5b;font-family: Arial, sans-serif;font-size: 15px;line-height: 100%;">
+                                <em>عاااااااااجل #عاجل   غارات جوية على باجل الآن ضربتين &quot;</em></td>
+                        </tr>
+                    </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                                <td width="40" style="border-collapse: collapse;"><img
+                                        src="https://pbs.twimg.com/profile_images/959328440922058752/pX9dFxdp_bigger.jpg" alt="" width="30" height="30"
+                                        style="border: none;outline: none;display: block;">
+                                </td>
+                                <td class="auth"
+                                    style="border-collapse: collapse;color: #343A3E;font-family: Arial, sans-serif;line-height: 100%;font-size: 14px;font-weight: bold;text-decoration: none;">
+                                الحديدة الآن🇾🇪
+                                </td>
+                                <td width="10" style="border-collapse: collapse;">&nbsp;</td>
+                                <td class="han"
+                                    style="border-collapse: collapse;color: #94a4af;font-family: Arial, sans-serif;line-height: 100%;font-size: 14px;font-weight: normal;text-decoration: none;">
+                                        <a style="border-collapse: collapse;color: #94a4af;font-family: Arial, sans-serif;line-height: 100%;font-size: 14px;font-weight: normal;text-decoration: none;"
+                                           href="https://redirect.dataminr.com/1/redirect?key=90822319&hash=GZh8n9tT8IL7rnXMKt45UcCgwqJsAJtlAtd25JpqbDdAxNuVsjLBuicV4rkUh82K&guid=923773a857d241029fed6666b3ddf38d">@ALHodeidah_now</a>
+                                </td>
+                        </tr>
+                    </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+            </td>
+            <td width="10" align="left" style="border-collapse: collapse;">&nbsp;</td>
+        </tr>
+    </table>
+
+
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="fullTable" style="width: 540px;">
+    <tr>
+        <td align="left" valign="top" class="column" style="border-collapse: collapse;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="fullTable" style="width: 540px;">
+                <tr>
+                    <td class="body"
+                        style="border-collapse: collapse;color: #444444;font-family: Arial, sans-serif;font-size: 12px;line-height: 130%;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                        ESTIMATED EVENT AREA:
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                            <span style="font-weight: bold;">Bājil, Yemen</span>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" class="sept"
+                                    style="border-collapse: collapse;color: #343A3E;font-size: 12px;font-family: Arial, sans-serif;text-decoration: none; padding-bottom:5px;">
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fleximage" style="border-collapse: collapse;"><img src="http://api.tiles.mapbox.com/v3/dataminr.map-zgzjvsle/43.285990800000036,15.0624131,8/540x124.png64" alt="" width="540"
+                            style="border: none;outline: none;display: block;"></td>
+                </tr>
+            </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="fullTable" style="width: 540px;">
+                <tr>
+                    <td class="body"
+                        style="border-collapse: collapse;color: #444444;font-family: Arial, sans-serif;font-size: 12px;line-height: 130%;">
+                            SOURCE VERIFICATION :
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+
+    <span style="color: #CC7332;font-family: Arial, sans-serif;font-weight:bold;vertical-align:middle;">
+        CHATTER
+    </span>
+</td>
+                                    <td width="5" style="border-collapse: collapse;">&nbsp;</td>
+                                    <td>@ALHODEIDAH_NOW</td>
+                                </tr>
+                            </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                                Account Created: <span style="font-weight: bold;">03.29.2015</span><br/>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                                Tweets <span style="font-weight: bold;">6,342</span> | Followers <span style="font-weight: bold;">22,498</span><br/>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                                <em>#الحديدة_الآن ، تهامة تنتصر</em><br/>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+                                        <table border="0" cellspacing="0" cellpadding="0" class="fullTable" style="width: 540px;">
+                                            <tr>
+                                                <td align="left" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="">
+    <tr>
+
+
+
+    <td align="center" style="border:0;border-collapse:collapse;">
+        <div>
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                         href="https://redirect.dataminr.com/1/mobile/redirect?key=90822319&hash=dQpXWOsZ-isIwr88DcZYSkxkRi1qOZzDwn6Dw1TjLMs9wG3fUrlRFaYja_aZgaeiJNctFCMBw4312RRqJrMCaQ==&guid=923773a857d241029fed6666b3ddf38d&path=/&fragment=trackStory/983090866-1528073100000-3" style="cursor:pointer;height:30px;v-text-anchor:middle;width:110px;"
+                         arcsize="17%" strokecolor="#29abe2" fillcolor="#29abe2">
+            <w:anchorlock/>
+            <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Track Story</center>
+            </v:roundrect>
+            <![endif]-->
+                <a class="button" href="https://redirect.dataminr.com/1/mobile/redirect?key=90822319&hash=dQpXWOsZ-isIwr88DcZYSkxkRi1qOZzDwn6Dw1TjLMs9wG3fUrlRFaYja_aZgaeiJNctFCMBw4312RRqJrMCaQ==&guid=923773a857d241029fed6666b3ddf38d&path=/&fragment=trackStory/983090866-1528073100000-3" style="cursor:pointer;background-color:#29abe2;border:1px solid #29abe2;border-radius:7px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:30px;text-align:center;text-decoration:none;width:110px;-webkit-text-size-adjust:none;mso-hide:all;">
+                    Track Story
+                </a>
+        </div>
+    </td>
+
+            <td width="10" style="border-collapse: collapse;">&nbsp;</td>
+
+
+
+
+    <td align="center" style="border:0;border-collapse:collapse;">
+        <div>
+            <!--[if mso]>
+            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                         href="https://redirect.dataminr.com/1/mobile/redirect?key=90822319&hash=dQpXWOsZ-isIwr88DcZYSplGzDce56iUIwYRWs6Jqkg2ephKVytIYC6bOruAiajeS1J6jkpx6XoE8etAOD4epIIe05cNXDLZsIu6qDzCfVM=&guid=923773a857d241029fed6666b3ddf38d&alertId=983090866-1528073100000-3&path=/&fragment=/alertDetail/5/983090866-1528073100000-3" style="cursor:pointer;height:30px;v-text-anchor:middle;width:140px;"
+                         arcsize="17%" strokecolor="#29abe2" fillcolor="#ffffff">
+            <w:anchorlock/>
+            <center style="color:#29abe2;font-family:sans-serif;font-size:13px;font-weight:bold;">Open in Dataminr</center>
+            </v:roundrect>
+            <![endif]-->
+                <a class="dataminr-button" href="https://redirect.dataminr.com/1/mobile/redirect?key=90822319&hash=dQpXWOsZ-isIwr88DcZYSplGzDce56iUIwYRWs6Jqkg2ephKVytIYC6bOruAiajeS1J6jkpx6XoE8etAOD4epIIe05cNXDLZsIu6qDzCfVM=&guid=923773a857d241029fed6666b3ddf38d&alertId=983090866-1528073100000-3&path=/&fragment=/alertDetail/5/983090866-1528073100000-3" name="983090866-1528073100000-3" style="cursor:pointer;background-color:#ffffff;border:1px solid #29abe2;border-radius:7px;color:#29abe2;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:30px;text-align:center;text-decoration:none;width:140px;-webkit-text-size-adjust:none;mso-hide:all;">
+                    Open in Dataminr
+                </a>
+        </div>
+    </td>
+
+
+    </tr>
+</table>
+
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+<table border="0" cellspacing="0" cellpadding="0" style="width: 540px;background: #c8c8c8;" class="wrapper">
+    <tr>
+        <td class="smallspacer " bgcolor="c8c8c8" style="border-collapse: collapse;height: 1px;font-size: 1px;line-height: 1px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 3px;font-size: 3px;line-height: 3px;">
+            &nbsp;</td>
+    </tr>
+</table>
+    <table border="0" cellspacing="0" cellpadding="0" class="fullTable" style="width: 540px;">
+        <tr>
+            <td align="left" style="border-collapse: collapse;">
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 1px;font-size: 1px;line-height: 1px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="16" align="left" valign="top"
+                                style="border-collapse: collapse;"><img src="https://s3.amazonaws.com/com.ebh.dataminr.web/email/watchlist.png" alt=""
+                                                                        height="14"
+                                                                        style="border: none;outline: none;display: block;">
+                            </td>
+                            <td class="footer"
+                                style="border-collapse: collapse;color: #999999;font-family: Arial, sans-serif;font-size: 11px;line-height: 100%;">
+                                <strong>Lists:</strong> MENA_Locals, MENA_Nash
+                            </td>
+                        </tr>
+                    </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td valign="top" width="16" style="font-size:11px;border-collapse: collapse;line-height:100%;"><img
+                                src="https://s3.amazonaws.com/com.ebh.dataminr.web/email/topic.png" alt="" height="14"
+                                style="border: none;outline: none;" /></td>
+                        <td class="footer"
+                            style="border-collapse: collapse;color: #999999;font-family: Arial, sans-serif;font-size: 11px;line-height:100%;">
+                            <strong>Topics:</strong> Conflicts - Land, Conflicts - Air</td>
+                    </tr>
+                </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="footer"
+                            style="border-collapse: collapse;color: #999999;font-family: Arial, sans-serif;font-size: 11px;line-height: 100%;">
+                            <em>Adjust topic importance by <a href="https://redirect.dataminr.com/1/redirect?key=90822319&hash=dQpXWOsZ-isIwr88DcZYSrlH2SHCXtr0yvQ-ioNuGuABHlUzurOzTaG11fp6N5M2&guid=923773a857d241029fed6666b3ddf38d"
+                                                              style="transition: all .25s;color: #999999;text-decoration: underline;">opening settings</a></em></td>
+                        <td> <img src="https://redirect.dataminr.com/1/redirect?key=90822319&hash=Zq4YxoZR1LiVlwyEbfj2EHdyRonvb-XjWnhrbRa6N7V_Dvyfz1_W0I85mWhTptDXbzlMjo8urs_6h-57NFcX1Q==&guid=923773a857d241029fed6666b3ddf38d"> </td>
+                    </tr>
+                </table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer "  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+            </td>
+        </tr>
+    </table>
+<table border="0" cellspacing="0" cellpadding="10" class="wrapper" style="width: 560px;">
+    <tr>
+        <td bgcolor="#f4f4f4" class="footer"
+            style="border-collapse: collapse;color: #999999;font-family: Arial, sans-serif;font-size: 11px;line-height: 100%;">
+            <em>Copyright, 2018. All rights are reserved under U.S. Copyright Law. Any unauthorized use, including reproduction, modification, distribution or publication, without the prior written consent of Dataminr, is strictly prohibited.</em>
+            <br /><br />
+            <em>You agree to the following terms of use <a style="transition: all .25s;color: #999999;text-decoration: underline;"
+                                                           href="https://www.dataminr.com/terms-of-service-ps">here</a>.</em>
+            </td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer collapsedSpacer"  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td class="smallspacer collapsedSpacer"  style="border-collapse: collapse;height: 10px;font-size: 10px;line-height: 10px;">
+            &nbsp;</td>
+    </tr>
+</table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <div id="gmailfix" style="white-space: nowrap;font: 15px courier;color: white;display: none;">
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    </div>
+</center>
+</body>
+</html>
