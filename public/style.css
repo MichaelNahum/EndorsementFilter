@@ -1,7 +1,7 @@
  #column {
    height: 100%;
-   width: 50%;
-   float: right;
+   width: 70%;
+   float: left;
    color: 	#E0FFFF;
 
  }
@@ -73,11 +73,24 @@ h2 {
  }
 .endorsement > button {
   float:right;
+  margin: 0px 0px 5px 5px;
+
 }
 
+.vernacular {
+  margin: 0px 0px 10px 0px;
+  color: black;
+  font-size: 14px;
+  direction: rtl;
+}
+.sourceType {
+float:right;
+color: black;
+}
  .city, .timestamp {
    color: #3a3a3a;
    overflow: auto;
+
  }
 
  .timestamp {
@@ -85,11 +98,20 @@ h2 {
  }
 
  .headline {
-   margin-top: 15px;
+   margin: 10px 0px;
    color: black;
    font-size: 14px;
  }
 
+.geoTag {
+  float:right;
+  color: black;
+}
+
+.tags {
+  color: black;
+
+}
 
  #place {
    float: left;

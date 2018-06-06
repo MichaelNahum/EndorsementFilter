@@ -9,7 +9,7 @@
     onload="this.onload=function(){};handleClientLoad()"
     onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
-    <script src="../client_secret.json"></script>
+    <!-- <script src="../client_secret.json"></script> -->
     <script src="../quickstart.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/dankogai/js-base64/base64.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,11 +30,16 @@
    <div id="endorsements">
    </div>
    <div class="endorsement">
+     <button aria-label="Close" class="delete" onclick="$(this).closest('.endorsement').remove()">&times;</button><br>
      <span class="timestamp">08:04pm May 12, 2018 EDT</span>
-     <button aria-label="Close" class="delete" onclick="$(this).closest('.endorsement').remove()">&times;</button>
-     <div class="headline">Syrian government forces fire on coalition aircraft near SDF controlled village of Mahkan, Syria: Local News Outlet via Twitter.</div><br>
-   </div>
- </div>
+     <span class="geoTag">Deir ez-Zur, Syria</span>
+     <div class="headline">Syrian government forces fire on coalition aircraft near SDF controlled village of Mahkan, Syria: Local News Outlet via Twitter.</div>
+     <div class="vernacular">قوات النظام المنتشرة في بلدة محكان شرق #ديرالزور تفتح نيران أسلحتها الرشاشة تجاه طائرات للتحالف الدولي في سماء المنطقة الواقعة تحت سيطرة "قسد" في الجانب الأيسر من نهر الفرات.</div>
+     <span class="tags">Conflicts - Land, Conflicts - Air</span>
+     <span class="sourceType">LOCAL NEWS</span>
+     <!-- <span class="precedence"></span> -->
+</div>
+
 
     <script>
 
@@ -43,25 +48,60 @@
     endorse_template = $('.endorsement').clone();
     $('.endorsement').remove();
 
-  function createEndorsement(email) {
-    let endorse = endorse_template.clone();
+    function findElementsDirectlyContainingText(ancestor, text) {
+      let elements= [];
+      walk(ancestor);
+      return elements;
+
+      function walk(element) {
+        let n= element.childNodes.length;
+        for (let i= 0; i<n; i++) {
+          let child= element.childNodes[i];
+          if (child.nodeType===3 && child.data.indexOf(text)!==-1) {
+            elements.push(element);
+            break;
+          };
+        };
+        for (let i= 0; i<n; i++) {
+          let child= element.childNodes[i];
+          if (child.nodeType===1)
+          walk(child);
+        };
+      };
+    };
+
+    function createEndorsement(email) {
+     let endorse = endorse_template.clone();
+     let parsedEmail = Base64.decode(email.payload.parts[0].body.data);
+     console.log(parsedEmail)
+      // let translated = findElementsDirectlyContainingText($('center > table')[0], 'TRANSLATED FROM');
+      // let translation_el = translated.parent().next().next();
+      // let original_text = translation_el.textContent.trim();
     endorse.find('.timestamp').text(new Date(+email.internalDate));
     endorse.find('.headline').text(email.payload.headers[31].value);
+    endorse.find('.vernacular').text('herrro');
     return endorse;
+    // 4. email -> endorse. endorse is a div modelled after .endorsement, with its components drawn from the email object's attributes. 
   }
 
   function populateMessages(captions) {
-    return captions.map(e => createEndorsement(e));
+    return captions.map(email => createEndorsement(email));
+    // 3. captions -> email. each email represents an object whose keys are parsed by createEndorsement for html elements
   }
 
      $('#place').keypress( function(){
        $('#endorsements').empty()
        let userSearch = new RegExp($('#place').val(), "gi");
+         // 1. messages is an array of objects representing <100 emails in USGrant63's Label_7 folder
        let captions = messages.filter(function(message){
          return message.payload.headers[31].value.match(userSearch);
+         // 2. messages -> captions. captions is an array of objects representing X emails whose payload.headers[31].value contains the userSearch string
        });
        $('#endorsements').append(populateMessages(captions))
      });
+
+
+
 
     </script>
 
